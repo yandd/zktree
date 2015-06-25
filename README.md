@@ -1,7 +1,7 @@
 zktree
 ======
 
-Display zookeeper znodes like command `tree`.
+Display znodes tree of zookeeper like command `tree`.
 
 ```
 /

@@ -14,7 +14,7 @@ static struct option longopts[] = {
 static void usage(const char *execfile)
 {
 	printf("Usage: %s [OPTION...]\n\n", execfile);
-	printf("  -s, --server=zkserver       Set zookeeper host, default is \"127.0.0.1:2181\"\n");
+	printf("  -s, --server=zkserver       Set zookeeper host, default is \"localhost:2181\"\n");
 	printf("  -r, --root=zkroot           Set root znode, default is \"/\"\n");
 	printf("  -h, --help                  Show this message\n\n");
 }
