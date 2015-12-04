@@ -6,7 +6,7 @@
 
 static struct option longopts[] = {
 	{"help", no_argument, NULL, 'h'},
-	{"server", required_argument, NULL, 's'},
+	{"host", required_argument, NULL, 'h'},
 	{"root", required_argument, NULL, 'r'},
 	{NULL, 0, NULL, 0}
 };
@@ -14,7 +14,7 @@ static struct option longopts[] = {
 static void usage(const char *execfile)
 {
 	printf("Usage: %s [OPTION...]\n\n", execfile);
-	printf("  -s, --server=zkserver       Set zookeeper host, default is \"localhost:2181\"\n");
+	printf("  -h, --host=zkserver         Set zookeeper host, default is \"localhost:2181\"\n");
 	printf("  -r, --root=zkroot           Set root znode, default is \"/\"\n");
 	printf("  -h, --help                  Show this message\n\n");
 }
@@ -26,6 +26,10 @@ static void zk_tree_internal(zhandle_t *zk, const char *path, const char *space)
 	int i = 0;
 	char abs_path[256] = {'\0'};
 	char child_space[64] = {'\0'};
+
+	if (NULL == zk || NULL == path || '\0' == path[0] || NULL == space) {
+		return;
+	}
 
 	memset(&sv, 0, sizeof(sv));
 	
